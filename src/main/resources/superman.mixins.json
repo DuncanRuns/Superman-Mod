@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "me.duncanruns.superman.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "LivingEntityMixin",
+    "PlayerEntityMixin",
+    "ServerPlayerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "ClientPlayerEntityMixin"
+  ]
+}

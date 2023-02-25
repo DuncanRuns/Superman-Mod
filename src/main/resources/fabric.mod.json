@@ -1,0 +1,17 @@
+{
+	"schemaVersion": 1,
+	"id": "superman",
+	"version": "${version}",
+	"name": "Superman Mod",
+	"description": "You go fast.",
+	"authors": [
+		"DuncanRuns"
+	],
+	"license": "CC0-1.0",
+	"icon": "assets/superman/icon.png",
+	"environment": "*",
+	"mixins": [
+		"superman.mixins.json"
+	],
+	"accessWidener": "superman.accesswidener"
+}
