@@ -53,9 +53,7 @@ public abstract class PlayerEntityMixin extends LivingEntity {
 
     @Inject(method = "getBlockBreakingSpeed", at = @At("HEAD"), cancellable = true)
     private void momentumBreakMixin(BlockState block, CallbackInfoReturnable<Float> info) {
-        if (isFallFlying()) {
-            info.setReturnValue(100000F);
-        }
+        info.setReturnValue(100000F);
     }
 
     @Override
