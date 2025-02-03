@@ -28,6 +28,5 @@ public abstract class ServerPlayNetworkHandlerMixin {
                 buf.readDouble(),
                 buf.readDouble()
         ));
-        player.setJumping(buf.readBoolean());
     }
 }
