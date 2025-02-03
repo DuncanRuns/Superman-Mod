@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import static me.duncanruns.superman.DuncansAwesomeUtil.angleBetween;
+import static me.duncanruns.superman.Superman.angleBetween;
 
 @Mixin(value = {ClientPlayerEntity.class, OtherClientPlayerEntity.class})
 public abstract class PoofablePlayerEntityMixin extends PlayerEntity {

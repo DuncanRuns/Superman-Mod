@@ -1,7 +1,7 @@
 package me.duncanruns.superman.mixin;
 
 import com.mojang.authlib.GameProfile;
-import me.duncanruns.superman.JumpHaver;
+import me.duncanruns.superman.mixinint.JumpOwner;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ServerPlayerEntity.class)
-public abstract class ServerPlayerEntityMixin extends PlayerEntity implements JumpHaver {
+public abstract class ServerPlayerEntityMixin extends PlayerEntity implements JumpOwner {
     private boolean holdingJumpDuringGlide;
 
     public ServerPlayerEntityMixin(World world, BlockPos blockPos, GameProfile gameProfile) {
@@ -25,7 +25,7 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity implements Ju
     }
 
     @Override
-    public boolean getHoldingJumpDuringGlide() {
+    public boolean superman$getHoldingJumpDuringGlide() {
         return holdingJumpDuringGlide;
     }
 }

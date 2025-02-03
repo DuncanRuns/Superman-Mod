@@ -3,10 +3,12 @@
   "package": "me.duncanruns.superman.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "CustomPayloadC2SPacketMixin",
     "LivingEntityMixin",
     "PlayerEntityMixin",
     "PoofablePlayerEntityMixin",
-    "ServerPlayerEntityMixin"
+    "ServerPlayerEntityMixin",
+    "ServerPlayNetworkHandlerMixin"
   ],
   "injectors": {
     "defaultRequire": 1

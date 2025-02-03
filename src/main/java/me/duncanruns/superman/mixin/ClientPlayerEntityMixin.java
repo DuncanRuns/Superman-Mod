@@ -1,6 +1,8 @@
 package me.duncanruns.superman.mixin;
 
 import com.mojang.authlib.GameProfile;
+import io.netty.buffer.Unpooled;
+import me.duncanruns.superman.Superman;
 import net.minecraft.client.input.Input;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.network.ClientPlayerEntity;
@@ -8,8 +10,10 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.network.packet.c2s.play.PlayerInputC2SPacket;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.packet.c2s.play.CustomPayloadC2SPacket;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -40,7 +44,13 @@ public abstract class ClientPlayerEntityMixin extends PlayerEntity {
     @Inject(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;tick()V", shift = At.Shift.AFTER))
     private void sendMoreInputPackets(CallbackInfo ci) {
         if (isFallFlying()) {
-            this.networkHandler.sendPacket(new PlayerInputC2SPacket(this.sidewaysSpeed, this.forwardSpeed, this.input.jumping, this.input.sneaking));
+            PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
+            Vec3d vel = this.getVelocity();
+            buf.writeDouble(vel.x);
+            buf.writeDouble(vel.y);
+            buf.writeDouble(vel.z);
+            buf.writeBoolean(this.input.jumping);
+            this.networkHandler.sendPacket(new CustomPayloadC2SPacket(Superman.FLIGHT_DATA, buf));
         }
     }
 }

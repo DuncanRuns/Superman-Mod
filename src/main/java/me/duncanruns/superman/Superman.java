@@ -1,12 +1,14 @@
 package me.duncanruns.superman;
 
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 
-public final class DuncansAwesomeUtil {
+public final class Superman {
+    public static Identifier FLIGHT_DATA = Identifier.tryParse("superman:flight_data");
     private static final double PI = Math.PI;
     private static final double TWOPI = PI * 2;
 
-    private DuncansAwesomeUtil() {
+    private Superman() {
     }
 
     public static double angleBetween(Vec3d v1, Vec3d v2) {
